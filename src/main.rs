@@ -1,4 +1,5 @@
-mod lsp;
+pub mod indexer;
+pub mod lsp;
 
 use lsp::backend::Backend;
 

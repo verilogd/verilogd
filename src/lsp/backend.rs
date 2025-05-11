@@ -1,6 +1,8 @@
+use crate::indexer::indexer::*;
 use log::debug;
 use std::default::Default;
 use std::io::prelude::*;
+use std::path::{Path, PathBuf};
 use std::sync::{Arc, RwLock};
 use tower_lsp::jsonrpc::Result;
 use tower_lsp::lsp_types::*;
@@ -67,6 +69,9 @@ impl LanguageServer for Backend {
 		self.client
 			.log_message(MessageType::INFO, "server initialized")
 			.await;
+
+		let uri = self.root_uri.read().unwrap().clone();
+		indexer_index_workspace(Path::new(uri.unwrap().path())).await;
 	}
 
 	async fn shutdown(&self) -> Result<()> {
