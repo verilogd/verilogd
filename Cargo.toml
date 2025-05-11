@@ -4,3 +4,8 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+sv-parser = "0.13.3"
+tower-lsp = "0.20"
+tokio = { version = "1.17", features = ["full"] }
+log = "0.4"
+simplelog = "^0.12.0"
