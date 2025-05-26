@@ -1,4 +1,6 @@
+pub mod completion;
 pub mod indexer;
+pub mod lang;
 pub mod lsp;
 
 use lsp::backend::Backend;
